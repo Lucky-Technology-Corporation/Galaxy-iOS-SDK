@@ -56,7 +56,7 @@ class APIManager{
                 }
                 
                 guard (200...299).contains(httpResponse.statusCode) else {
-                    print(url)
+                    print(urlPath)
                     completion(.failure(NSError(domain: "Server Error", code: httpResponse.statusCode, userInfo: nil)))
                     return
                 }
@@ -74,7 +74,7 @@ class APIManager{
     }
 
     private func getAuthorizationType(savedToken: String) -> String {
-        let parts = savedToken.split(separator: ".")
+        let parts = savedToken.customSplit(separator: ".")
         if parts.count > 2 {
             var decode = String(parts[1])
             let padLength = 4 - decode.count % 4
@@ -89,12 +89,20 @@ class APIManager{
             if userInfo.contains("anonymous") {
                 let anonSeparator = "\"anonymous\":"
                 let commaSeparator = ",\""
-                let anonymous = userInfo.split(separator: anonSeparator)[1].split(separator: commaSeparator)[0]
+                let anonymous = userInfo.customSplit(separator: anonSeparator)[1].customSplit(separator: commaSeparator)[0]
                 if anonymous != "true" {
+                    print("SA")
                     return "Super-Authorization"
                 }
             }
         }
+        print("AA")
         return "Anonymous-Authorization"
+    }
+}
+
+extension String {
+    func customSplit(separator: String, maxSplits: Int = Int.max, omittingEmptySubsequences: Bool = true) -> [String] {
+        return self.components(separatedBy: separator)
     }
 }

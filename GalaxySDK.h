@@ -13,5 +13,4 @@ FOUNDATION_EXPORT double GalaxySDKVersionNumber;
 //! Project version string for GalaxySDK.
 FOUNDATION_EXPORT const unsigned char GalaxySDKVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <GalaxySDK/PublicHeader.h>
-#import <GalaxySDK/GalaxySDK-Swift.h>
+#import <GalaxySDK-Swift.h>

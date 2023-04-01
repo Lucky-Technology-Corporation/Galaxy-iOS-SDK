@@ -263,7 +263,7 @@ import UIKit
         }
     }
     
-    @objc public func findOpponent(leaderboardId: String, completion: @escaping (OpponentResult?) -> Void){
+    @objc public func findOpponent(leaderboardId: String, completion: @escaping (LeaderboardRecord?) -> Void){
         if configurationInProgress{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.findOpponent(leaderboardId: leaderboardId, completion: completion)
@@ -274,11 +274,10 @@ import UIKit
         APIManager().apiCall(urlPath: "/client/leaderboards/\(leaderboardId)/find_opponent?leaderboard_id=\(leaderboardId)&first_bound=-25&second_bound=25", method: .get, parameters: nil, publishableKey: publishableKey) { result in
             switch result {
             case .success(let data):
-                print(String(data: data, encoding: .ascii))
                 let decoder = JSONDecoder()
                 do{
-                    let opponent = try decoder.decode(OpponentResultApiResponse.self, from: data)
-                    return completion(opponent.data)
+                    let opponent = try decoder.decode(PlayerRecordApiResponse.self, from: data)
+                    return completion(opponent.data.record)
                 } catch let error{
                     print(error)
                     return completion(nil)
