@@ -130,9 +130,9 @@ import Foundation
 
 
 @objc public class PlayerRecordApiResponse: NSObject, Decodable {
-    @objc public let data: DataObject
+    @objc public let data: PlayerRecordDataObject
 
-    @objc public class DataObject: NSObject, Decodable {
+    @objc public class PlayerRecordDataObject: NSObject, Decodable {
         @objc public let record: LeaderboardRecord
         
         enum CodingKeys: String, CodingKey {
@@ -147,7 +147,7 @@ import Foundation
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        data = try container.decode(DataObject.self, forKey: .data)
+        data = try container.decode(PlayerRecordDataObject.self, forKey: .data)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -156,9 +156,9 @@ import Foundation
 }
 
 @objc public class ClanApiResponse: NSObject, Decodable {
-    @objc public let data: DataObject
+    @objc public let data: ClanDataObject
 
-    @objc public class DataObject: NSObject, Decodable {
+    @objc public class ClanDataObject: NSObject, Decodable {
         @objc public let clan: Clan
         
         enum CodingKeys: String, CodingKey {
@@ -173,7 +173,7 @@ import Foundation
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        data = try container.decode(DataObject.self, forKey: .data)
+        data = try container.decode(ClanDataObject.self, forKey: .data)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -255,9 +255,9 @@ import Foundation
 
 
 @objc public class State: NSObject, Decodable {
-    @objc public let data: DataObject
+    @objc public let data: StateDataObject
     
-    @objc public class DataObject: NSObject, Decodable {
+    @objc public class StateDataObject: NSObject, Decodable {
         @objc public let state: NSString
         
         enum CodingKeys: String, CodingKey {
@@ -272,7 +272,7 @@ import Foundation
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        data = try container.decode(DataObject.self, forKey: .data)
+        data = try container.decode(StateDataObject.self, forKey: .data)
     }
     
     enum CodingKeys: String, CodingKey {
