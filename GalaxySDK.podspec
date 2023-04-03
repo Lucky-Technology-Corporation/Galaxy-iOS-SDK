@@ -78,7 +78,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/Lucky-Technology-Corporation/Galaxy-iOS-SDK.git" }
+  spec.source       = { :git => "https://github.com/Lucky-Technology-Corporation/Galaxy-iOS-SDK.git", :tag => "1.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -94,6 +94,7 @@ Pod::Spec.new do |spec|
 
   # spec.public_header_files = "Classes/**/*.h"
 
+  spec.swift_version = "4.0"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
