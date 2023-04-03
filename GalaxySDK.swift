@@ -468,13 +468,12 @@ import UIKit
     }
 
     private func getCurrentViewController() -> UIViewController? {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let delegate = windowScene.delegate as? SceneDelegate,
-              let window = delegate.window,
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
               let rootViewController = window.rootViewController
         else {
             return nil
         }
+
 
         var currentViewController = rootViewController
 
