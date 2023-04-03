@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 @objc public class GalaxySDK: NSObject{
-    static let shared = GalaxySDK()
+    public static let shared = GalaxySDK()
     
     let baseUri = "https://app.galaxy.us"
     let baseApi = "https://api.galaxysdk.com/api/v1"
