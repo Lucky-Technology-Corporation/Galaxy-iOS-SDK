@@ -416,6 +416,10 @@ import UIKit
         task.resume()
     }
     
+    @objc func uploadContacts(contactsObject: [String: Any]){
+        APIManager().apiCall(urlPath: "/users/update_contacts", method: .post, parameters: contactsObject, publishableKey: publishableKey) { _ in }
+    }
+    
     
     private func stringToList(_ message: String, _ separator: String) -> [String] {
         var exportList = [String]()

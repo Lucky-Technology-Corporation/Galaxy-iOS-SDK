@@ -91,12 +91,10 @@ class APIManager{
                 let commaSeparator = ",\""
                 let anonymous = userInfo.customSplit(separator: anonSeparator)[1].customSplit(separator: commaSeparator)[0]
                 if anonymous != "true" {
-                    print("SA")
                     return "Super-Authorization"
                 }
             }
         }
-        print("AA")
         return "Anonymous-Authorization"
     }
 }
